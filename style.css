@@ -65,6 +65,7 @@ button, section{
     width: 300px;
     height: 50px;
     margin: 5px;
+    color: white;
   }
 
   header{
@@ -72,12 +73,20 @@ button, section{
     display:flex;
     flex-direction: row;
     justify-content: center;
-    color: white;
   }
 
   section{
     display:flex;
     flex-direction: row;
     justify-content: center;
+  }
+
+  .btn:focus{
+    outline: white;
+}
+
+.btn-light{
+    background-color: transparent;
+    color: white;
   }
   
