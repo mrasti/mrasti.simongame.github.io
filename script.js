@@ -9,21 +9,17 @@ document.querySelector("#start").addEventListener('click', function(evt){
     lightOffAll();
     resetValues();
     resetScore();
+    document.querySelector('#score').innerText = "Score: " + score;
     lightPath();
 });
 
 function lightPath(){
     clickAllowed = false;
-    console.log("*******************");
-    console.log(timerVar);
     if(timerVar){
         clearInterval(timerVar);
     }
     currentIndex = 0;
     rndCircles.push(Math.floor(Math.random()*4));
-    console.log(rndCircles);
-    console.log(rndCircles.length-1);
-    console.log("last element " + rndCircles[rndCircles.length-1]);
     timerVar = setInterval(lightUp, 1000);
 }
 
@@ -37,14 +33,9 @@ function lightUp(){
     setTimeout(() => {
         document.querySelector("#c" + rndCircles[currentIndex]).removeAttribute('style');
         currentIndex++;
-        // if(document.querySelector("#c" + rndCircles[currentIndex]).hasAttribute('style')){
-        //     document.querySelector("#c" + rndCircles[currentIndex]).removeAttribute('style');
-        //     currentIndex++;
-        // }
     }, 350);
 }
 
-// console.log("now runnig next.")
 var circleElems = document.querySelectorAll('.circle');
 for(var i=0; i<circleElems.length; i++){
     circleElems[i].addEventListener('click', function(evt){
@@ -52,8 +43,6 @@ for(var i=0; i<circleElems.length; i++){
             return;
         }
         if("c"+rndCircles[clickIndex] === evt.target.id){
-            console.log("click index: " + clickIndex);
-            console.log("correct");
             evt.target.setAttribute('style', 'background-image: linear-gradient(rgb(208,228,246), lightgreen)');
             setTimeout(() => {
                 evt.target.removeAttribute('style');
@@ -65,14 +54,12 @@ for(var i=0; i<circleElems.length; i++){
                 lightPath();
             }
         } else{
-            console.log("click index: " + clickIndex);
-            console.log("wrong");
             evt.target.setAttribute('style', 'background-image: linear-gradient(rgb(96,84,60), rgb(84,41,41))');
             setTimeout(() => {
                 evt.target.removeAttribute('style');
                 alert("You lost!");
             }, 350); 
-            quit();
+            resetValues()
         }
     });
 }
@@ -88,6 +75,7 @@ document.querySelector('#quit').addEventListener('click', function(evt){
     clearInterval(timerVar);
     lightOffAll();
     resetValues();
+    resetScore();
 });
 
 function addToScore(){
