@@ -41,7 +41,6 @@ main{
     height: 90px;
     margin-top: 80px;
     margin-left: 0;
-    background-image: linear-gradient(#93D669, #3E8C59);
     background-image: linear-gradient(#FEEE8B, #3E8C59);
     box-shadow: 3px 2px 15px 2px rgba(255, 255,255, .8);
 }
